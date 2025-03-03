@@ -3,7 +3,7 @@ parent( tom, bob).
 parent( tom, liz).
 parent( bob, ann).
 parent( bob, pat).
-parent( bat, jim).
+parent( pat, jim).
 female( pam).
 female( liz).
 female( ann).
@@ -17,3 +17,6 @@ grandfather(X,Y) :- grandparent(X,Y),male(X).
 grandmother(X,Y) :- grandparent(X,Y),female(X).
 sister(X,Y)      :- parent(Z,X),parent(Z,Y),female(X),X\=Y.
 brother(X,Y)     :- parent(Z,X),parent(Z,Y),male(X),X\=Y.
+% #!  consult('ex.pl').
+ancestor(X, Z)  :- parent( X, Z).
+ancestor(X, Z)   :- parent( X, Y), ancestor(Y, Z).
